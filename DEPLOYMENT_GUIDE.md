@@ -29,50 +29,44 @@
 
 ---
 
-## 🚀 Déploiement
+## 🚀 Déploiement sur GitHub Pages
 
-### Option 1 : Vercel (actuel — recommandé)
+### Option 1 : GitHub Pages (actuel — recommandé) ✅
 
-**Avantage :** Déploiement auto, custom domain gratuit, CDN global
+**Avantage :** Gratuit, auto-redeploy, cohérent avec autres sites
 
+#### Configuration (une fois)
+1. Aller sur le repo : https://github.com/samir-chikhi/site-internet-toulouse-tlemcen
+2. Cliquer **Settings** → **Pages**
+3. Sélectionner :
+   - Source: **Deploy from a branch**
+   - Branch: **main**
+   - Folder: **/ (root)**
+4. Cliquer **Save**
+
+**Voilà !** GitHub Pages configure automatiquement.
+
+#### Après configuration
 ```bash
-# 1. Assurez-vous que git est à jour
-cd "C:\Users\samir\Documents\Sites Internet\site-internet-toulouse-tlemcen"
-git status
-
-# 2. Stage + commit
-git add index.html README.md DEPLOYMENT_GUIDE.md
-git commit -m "refactor: Complete website redesign — modern UI with greater impact
-
-- New design system: Toulouse blue (#0F3460) + Tlemcen orange (#D84315)
-- Typography: Space Grotesk + Inter
-- Native dark mode support (prefers-color-scheme)
-- Improved animations and micro-interactions
-- Arguments in grid layout (7 cards)
-- Better CTA hierarchy
-- WCAG 2.1 AA accessibility
-- Lighthouse score 95+
-
-Files:
-- index.html: Complete redesign
-- index_old.html: Backup of previous version
-
-Co-Authored-By: Claude Haiku 4.5 <noreply@anthropic.com>"
-
-# 3. Push
+# Après chaque modification, juste :
+git add .
+git commit -m "votre message"
 git push origin main
 
-# 4. Vercel redéploie AUTOMATIQUEMENT
-# → Votre site se met à jour en ~30 secondes
+# GitHub Pages redéploie automatiquement (~1–2 min)
+# Accès : https://samir-chikhi.github.io/site-internet-toulouse-tlemcen/
 ```
 
-**Après push :** Vercel déploie automatiquement. Vérifiez sur https://site-internet-toulouse-tlemcen.vercel.app
+#### Temps de déploiement
+- **Push** : Instantané
+- **GitHub Pages build** : 1–2 minutes
+- **Site live** : Visible après build complet
 
 ---
 
 ### Option 2 : Netlify (alternative performante)
 
-**Avantage :** Encore plus rapide, formulaires natifs, analytics
+**Avantage :** Un peu plus rapide, formulaires, email, analytics
 
 ```bash
 # 1. Installer Netlify CLI
@@ -84,23 +78,23 @@ netlify login
 # 3. Déployer
 netlify deploy --prod --dir=.
 
-# 4. Custom domain déjà configuré ?
-# → Netlify redirige automatiquement
+# Site live sous : https://site-internet-toulouse-tlemcen.netlify.app
 ```
 
 ---
 
-### Option 3 : GitHub Pages (gratuit, simple)
+### Option 3 : Vercel (autre alternative)
 
-**Avantage :** Zéro coût, lié à GitHub repo
+**Avantage :** Très rapide, intégrations, analytics
 
 ```bash
-# 1. Configurer GitHub Pages dans repo settings
-# → Branch: main
-# → Folder: / (root)
+# Pré-requis : compte Vercel connecté à GitHub
+# → Déploiement automatique après git push
 
-# 2. Après git push, le site se met à jour auto
-# → Accès via : https://samir-chikhi.github.io/site-internet-toulouse-tlemcen/
+git add .
+git commit -m "votre message"
+git push origin main
+# → Vercel redéploie en ~30 secondes
 ```
 
 ---

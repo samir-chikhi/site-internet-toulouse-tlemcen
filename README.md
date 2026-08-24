@@ -46,25 +46,30 @@ Mobiliser les citoyens, les décideurs et les compagnies aériennes pour ouvrir 
 
 ---
 
-## 🚀 Déploiement
+## 🚀 Déploiement sur GitHub Pages
 
-### ✅ Actuellement en ligne sur Vercel
+### ✅ Actuellement en ligne sur GitHub Pages
 ```
-https://site-internet-toulouse-tlemcen.vercel.app
+https://samir-chikhi.github.io/site-internet-toulouse-tlemcen/
 ```
+
+### Configuration GitHub Pages
+1. Aller dans **Settings** → **Pages**
+2. Source: **Deploy from a branch**
+3. Branch: **main** | Folder: **/ (root)**
+4. Save → GitHub déploie automatiquement
 
 ### Redéployer après une modification
 ```bash
 git add .
 git commit -m "votre message"
 git push origin main
-# → Vercel redéploie automatiquement (~30 secondes)
+# → GitHub Pages redéploie automatiquement (~1–2 minutes)
 ```
 
-### Alternative : Déployer sur Netlify
-```bash
-netlify deploy --prod --dir=.
-```
+### Alternatives (si besoin)
+- Netlify : `netlify deploy --prod --dir=.`
+- Vercel : Déploiement drag-drop
 
 **Détails complets** → Voir [DEPLOYMENT_GUIDE.md](DEPLOYMENT_GUIDE.md)
 
