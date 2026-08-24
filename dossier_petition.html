@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dossier de Pétition — Toulouse ✈ Tlemcen</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #111827;
+            background: white;
+        }
+
+        /* Page styles for printing */
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+
+        .page {
+            width: 100%;
+            max-width: 210mm;
+            height: 297mm;
+            margin: 0 auto;
+            padding: 20mm;
+            background: white;
+            page-break-after: always;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+        }
+
+        /* ===== COVER PAGE ===== */
+        .page-cover {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(135deg, #0F3460 0%, #1B4A7F 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .page-cover::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 200px;
+            height: 200px;
+            background: rgba(216, 67, 21, 0.1);
+            border-radius: 50%;
+            opacity: 0.3;
+        }
+
+        .cover-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cover-plane {
+            font-size: 80px;
+            margin-bottom: 20px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .cover-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 64px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.1;
+        }
+
+        .cover-subtitle {
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .cover-stat {
+            font-size: 48px;
+            font-weight: 700;
+            margin-top: 40px;
+            background: linear-gradient(135deg, #D84315, #FF6B35);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .cover-footer {
+            margin-top: 80px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* ===== CONTENT PAGES ===== */
+        .page-content {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+        }
+
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 36px;
+            font-weight: 700;
+            color: #0F3460;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #D84315;
+            padding-bottom: 15px;
+        }
+
+        .section-subtitle {
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #D84315;
+            margin-bottom: 20px;
+        }
+
+        .content-text {
+            font-size: 14px;
+            line-height: 1.8;
+            margin-bottom: 20px;
+            color: #374151;
+        }
+
+        .highlight {
+            color: #D84315;
+            font-weight: 600;
+        }
+
+        /* ===== STATS ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-box {
+            background: #F3F4F6;
+            border-left: 4px solid #D84315;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 28px;
+            font-weight: 700;
+            color: #D84315;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: #6B7280;
+            margin-top: 5px;
+            font-weight: 500;
+        }
+
+        /* ===== IMAGES ===== */
+        .image-full {
+            width: 100%;
+            height: auto;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .image-caption {
+            font-size: 12px;
+            color: #6B7280;
+            font-style: italic;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        /* ===== ARGUMENTS ===== */
+        .argument {
+            margin-bottom: 20px;
+            padding: 15px;
+            border-left: 3px solid #0F3460;
+            background: #F9FAFB;
+        }
+
+        .argument-title {
+            font-weight: 700;
+            color: #0F3460;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .argument-text {
+            font-size: 13px;
+            color: #374151;
+            line-height: 1.6;
+        }
+
+        /* ===== COMPARISON TABLE ===== */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 12px;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            border: 1px solid #E5E7EB;
+            padding: 12px;
+            text-align: left;
+        }
+
+        .comparison-table th {
+            background: #0F3460;
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-table tr:nth-child(even) {
+            background: #F9FAFB;
+        }
+
+        .bad { color: #EF4444; font-weight: 600; }
+        .good { color: #10B981; font-weight: 600; }
+
+        /* ===== FOOTER ===== */
+        .page-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E7EB;
+            font-size: 11px;
+            color: #6B7280;
+            text-align: center;
+        }
+
+        /* ===== PRINT ===== */
+        @media print {
+            body { background: white; }
+            .page { box-shadow: none; }
+        }
+    </style>
+</head>
+<body>
+    <!-- PAGE 1: COVER -->
+    <div class="page page-cover">
+        <div class="cover-content">
+            <div class="cover-plane">✈️</div>
+            <div class="cover-title">TOULOUSE<br>TLEMCEN</div>
+            <div class="cover-subtitle">Une liaison directe pour reconnecter une région</div>
+            <div class="cover-stat">500 000+ concernés</div>
+            <div class="cover-footer">
+                Pétition pour l'ouverture d'une ligne aérienne directe<br>
+                Toulouse-Blagnac ↔ Tlemcen Zenata
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 2: EXECUTIVE SUMMARY -->
+    <div class="page page-content">
+        <div class="section-subtitle">SYNTHÈSE EXÉCUTIVE</div>
+        <h2 class="section-title">Le cas pour une liaison directe</h2>
+
+        <p class="content-text">
+            Cette pétition demande l'ouverture d'une <span class="highlight">ligne aérienne directe Toulouse-Tlemcen</span>, une connexion vitale entre deux régions liées par la démographie, la culture et l'histoire.
+        </p>
+
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-number">+126%</div>
+                <div class="stat-label">Croissance trafic France-Algérie (2019–2024)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">500K+</div>
+                <div class="stat-label">Personnes concernées en Occitanie</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">1h45</div>
+                <div class="stat-label">Durée vol direct vs 4–5h avec escale</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-number">–30%</div>
+                <div class="stat-label">Réduction CO₂ vs trajet avec correspondance</div>
+            </div>
+        </div>
+
+        <p class="content-text">
+            Cette liaison représente une <span class="highlight">opportunité économique majeure</span>, un impact environnemental positif et une solution humanitaire pour des milliers de familles.
+        </p>
+
+        <div class="page-footer">
+            Dossier de pétition — Toulouse ✈ Tlemcen | Août 2026
+        </div>
+    </div>
+
+    <!-- PAGE 3: TOULOUSE HERO IMAGE -->
+    <div class="page page-content">
+        <div class="section-subtitle">TOULOUSE</div>
+        <h2 class="section-title">Capitale de l'Occitanie</h2>
+
+        <img src="https://images.unsplash.com/photo-1584794190519-c21a76315881?w=800&h=500&fit=crop" alt="Toulouse - Place du Capitole" class="image-full">
+        <div class="image-caption">Place du Capitole — Toulouse. Cœur administratif et culturel de l'Occitanie</div>
+
+        <p class="content-text">
+            Toulouse, avec <span class="highlight">7,8 millions de passagers annuels</span> à l'aéroport Toulouse-Blagnac, est un hub aérien majeur. La ville accueille <span class="highlight">130 000 étudiants</span> et représente le centre économique et touristique de la région.
+        </p>
+
+        <p class="content-text">
+            La présence d'une <span class="highlight">diaspora algérienne de 500 000+ personnes</span> en Occitanie crée une demande structurelle pour une connexion directe vers l'Algérie.
+        </p>
+
+        <div class="page-footer">
+            Source : Aéroport Toulouse-Blagnac, INSEE | Août 2026
+        </div>
+    </div>
+
+    <!-- PAGE 4: TLEMCEN HERO IMAGE -->
+    <div class="page page-content">
+        <div class="section-subtitle">TLEMCEN</div>
+        <h2 class="section-title">Porte de l'Oranie algérienne</h2>
+
+        <img src="https://images.unsplash.com/photo-1549144611-11ee7e8f935d?w=800&h=500&fit=crop" alt="Tlemcen - Architecture traditionnelle" class="image-full">
+        <div class="image-caption">Tlemcen — Patrimoine architectural et culturel de l'Oranie</div>
+
+        <p class="content-text">
+            Tlemcen (Wilaya d'Oran) est une <span class="highlight">ville universitaire majeure</span> et un centre culturel d'importance régionale. L'aéroport <span class="highlight">Tlemcen Zenata</span> est moderne et équipé aux normes internationales.
+        </p>
+
+        <p class="content-text">
+            Avec <span class="highlight">plus de 140 000 habitants</span>, Tlemcen représente un marché significatif en Algérie et un point d'accès à l'ensemble de la Wilaya d'Oran.
+        </p>
+
+        <div class="page-footer">
+            Source : Office de tourisme Tlemcen, Wilaya d'Oran | Août 2026
+        </div>
+    </div>
+
+    <!-- PAGE 5: DATA & MARKET -->
+    <div class="page page-content">
+        <div class="section-subtitle">DONNÉES CLÉS</div>
+        <h2 class="section-title">Le marché en chiffres</h2>
+
+        <div class="argument">
+            <div class="argument-title">1. Croissance exponentielle du trafic</div>
+            <div class="argument-text">Le trafic aérien France-Algérie a augmenté de <span class="highlight">+126,6% entre 2019 et 2024</span>. Cette croissance est bien supérieure aux trajets internationaux moyens et reflète une demande structurelle forte.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">2. Bassin démographique captif</div>
+            <div class="argument-text"><span class="highlight">500 000+ personnes d'origine algérienne</span> vivent en Occitanie, dont une forte concentration dans la région Toulouse. Beaucoup ont famille et activités commerciales en Algérie.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">3. Viabilité économique garantie</div>
+            <div class="argument-text">Distance similaire à Toulouse-Alger (800 km). <span class="highlight">2–3 vols/semaine avec 60% de taux de remplissage suffisent pour rentabilité immédiate</span>.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">4. Infrastructure existante</div>
+            <div class="argument-text">Toulouse-Blagnac et Tlemcen Zenata sont <span class="highlight">déjà équipés aux normes internationales</span>. Aucun investissement infrastructure majeur n'est nécessaire.</div>
+        </div>
+
+        <div class="page-footer">
+            Dossier de pétition — Toulouse ✈ Tlemcen | Août 2026
+        </div>
+    </div>
+
+    <!-- PAGE 6: COMPARISON -->
+    <div class="page page-content">
+        <div class="section-subtitle">IMPACT</div>
+        <h2 class="section-title">Aujourd'hui vs Demain</h2>
+
+        <table class="comparison-table">
+            <tr>
+                <th>Métrique</th>
+                <th class="bad">❌ Situation actuelle</th>
+                <th class="good">✅ Avec vol direct</th>
+            </tr>
+            <tr>
+                <td><strong>Durée totale</strong></td>
+                <td class="bad">4–5 heures</td>
+                <td class="good">1h45</td>
+            </tr>
+            <tr>
+                <td><strong>Coût A/R</strong></td>
+                <td class="bad">150–250 €</td>
+                <td class="good">150–200 €</td>
+            </tr>
+            <tr>
+                <td><strong>Itinéraire</strong></td>
+                <td class="bad">Toulouse → Hub → Tlemcen</td>
+                <td class="good">Toulouse → Tlemcen Direct</td>
+            </tr>
+            <tr>
+                <td><strong>Correspondances</strong></td>
+                <td class="bad">1–2 escales obligatoires</td>
+                <td class="good">Zéro escale</td>
+            </tr>
+            <tr>
+                <td><strong>Émissions CO₂</strong></td>
+                <td class="bad">Élevées (décollages multiples)</td>
+                <td class="good">–30 à –40%</td>
+            </tr>
+            <tr>
+                <td><strong>Stress/Fatigue</strong></td>
+                <td class="bad">Risque manquée correspondance</td>
+                <td class="good">Confort maximal</td>
+            </tr>
+        </table>
+
+        <p class="content-text" style="margin-top: 20px;">
+            <span class="highlight">Gain net : 3 heures par trajet, moins de stress, même coût.</span>
+        </p>
+
+        <div class="page-footer">
+            Dossier de pétition — Toulouse ✈ Tlemcen | Août 2026
+        </div>
+    </div>
+
+    <!-- PAGE 7: 7 REASONS -->
+    <div class="page page-content">
+        <div class="section-subtitle">FONDEMENTS</div>
+        <h2 class="section-title">7 raisons pour cette ligne</h2>
+
+        <div class="argument">
+            <div class="argument-title">① Marché en croissance exponentielle</div>
+            <div class="argument-text">+126,6% trafic France-Algérie (2019–2024). Le potentiel Toulouse-Tlemcen reste largement sous-exploité.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">② Bassin démographique captif</div>
+            <div class="argument-text">500 000+ personnes en Occitanie avec liens forts vers Tlemcen. Marché garanti.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">③ Viabilité économique assurée</div>
+            <div class="argument-text">2–3 vols/semaine @ 60% load = rentabilité immédiate. Distance : 800 km (compétitif).</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">④ Infrastructure disponible</div>
+            <div class="argument-text">Toulouse-Blagnac et Tlemcen Zenata déjà équipés aux normes internationales.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">⑤ Coopération académique</div>
+            <div class="argument-text">Toulouse (130K étudiants, pôle aéronautique) + Tlemcen (université majeure) = échanges facilités.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">⑥ Impact environnemental positif</div>
+            <div class="argument-text">–30 à –40% CO₂ vs trajet avec escale(s). Moins de décollages = moins de pollution.</div>
+        </div>
+
+        <div class="argument">
+            <div class="argument-title">⑦ Humanité avant tout</div>
+            <div class="argument-text">Reconnexion de milliers de familles. Gain 3h par trajet. Fin du parcours du combattant.</div>
+        </div>
+
+        <div class="page-footer">
+            Dossier de pétition — Toulouse ✈ Tlemcen | Août 2026
+        </div>
+    </div>
+
+    <!-- PAGE 8: CALL TO ACTION -->
+    <div class="page page-content">
+        <div class="section-subtitle">ACTION</div>
+        <h2 class="section-title">Comment aider</h2>
+
+        <p class="content-text" style="font-size: 16px; margin: 30px 0;">
+            Votre signature compte. Plus nous serons nombreux, plus notre demande sera entendue.
+        </p>
+
+        <div style="background: linear-gradient(135deg, #0F3460, #1B4A7F); color: white; padding: 30px; border-radius: 8px; text-align: center; margin: 30px 0;">
+            <p style="font-size: 18px; font-weight: 700; margin-bottom: 15px;">Signez la pétition maintenant</p>
+            <p style="font-size: 14px; margin-bottom: 20px;">https://c.org/dR7wYWkXQN</p>
+        </div>
+
+        <p class="content-text">
+            <span class="highlight">Destinataires de cette pétition :</span>
+        </p>
+        <ul style="font-size: 14px; color: #374151; margin-left: 20px; line-height: 2;">
+            <li>✈ Air Algérie</li>
+            <li>✈ Transavia</li>
+            <li>✈ ASL Airlines</li>
+            <li>🏢 Aéroport Toulouse-Blagnac</li>
+            <li>🏢 EGSA Tlemcen (aéroport Tlemcen)</li>
+            <li>🇫🇷 Ministère des Transports (France)</li>
+            <li>🇩🇿 Ministère des Transports (Algérie)</li>
+        </ul>
+
+        <div class="page-footer" style="margin-top: 60px;">
+            #ToulouseTlemcen #LiaisonDirecte #ConnexionOccitanie
+        </div>
+    </div>
+
+</body>
+</html>
